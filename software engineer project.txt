@@ -1,0 +1,90 @@
+#include<iostream>
+using namespace std;
+
+struct student {
+
+	string location;
+	string month;
+	student* next;
+
+	student(string i = "", string s = "", student* n = nullptr)
+	{
+		location = i;
+		month = s;
+		next = n;
+
+	}
+
+};
+
+void printlist(student*);
+void add_node_end(student*&, string, string);
+
+int main()
+{
+
+
+	student* head = nullptr;
+	int x;
+	string destination[3] = { "Tampa,Florida    |     03-12     |    01-08","Cancun,Mexico    |     13-20     |    13-22","Managua,Nicaragua|     21-30     |    24-28" };
+	cout << "1.Future Flight Schedules\n2.Book Flight\n3.Check confirmation\n4.Exit" << endl;
+	cout << "Choose an option: ";
+	cin >> x;
+	while (x != 0) {
+		cout << "1.Future Flight Schedules\n2.Book Flight\n3.Check confirmation" << endl;
+		cin >> x;
+		if (x == 1) {
+			cout << "Location         |     January   |   February" << endl;
+			for (int i = 0; i < 3; i++)
+				cout << destination[i] << " " << endl;
+		}
+		if (x == 2) {
+			string a, b;
+			cout << "Enter destination: ";
+			cin >> a;
+			cout << "Enter month:";
+			cin >> b;
+			add_node_end(head, a, b);
+			cout << "Your confirmation is confirmed! You destination to:" << a << " On the month of: " << b << " is booked"<<endl;
+		}
+		if (x == 3) {
+			printlist(head);
+		}
+
+	}
+	cout << "Thank you for using Manny Reservation system";
+	return 0;
+}
+
+void printlist(student* head)
+{
+
+	student* temp = head;
+
+	if (!head)
+		cout << "Empty linked list, Nothing to print\n";
+	else
+		while (temp)
+		{
+			cout << temp->location << " " << temp->month ;
+			cout << "\n";
+			temp = temp->next;
+
+		}
+
+}
+
+void add_node_end(student*& head, string i, string s)
+{
+
+	if (!head) // empty linked list
+		head = new student(i, s);
+	else
+	{
+		student* temp = head;
+		while (temp->next != nullptr)
+			temp = temp->next;
+		temp->next = new student(i, s);
+
+	}
+}
