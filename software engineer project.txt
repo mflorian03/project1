@@ -1,15 +1,17 @@
 #include<iostream>
 using namespace std;
 
-struct student {
+struct flight_system {
 
 	string location;
 	string month;
-	student* next;
+	flight_system* next;
 
-	student(string i = "", string s = "", student* n = nullptr)
+	flight_system(string i = "", string s = "", flight_system* n = nullptr)
 	{
-		location = i;
+		location = i;[InternetShortcut]
+URL=https://github.com/mflorian03/project1/blob/main/software%20engineer%20project.txt
+
 		month = s;
 		next = n;
 
@@ -17,14 +19,14 @@ struct student {
 
 };
 
-void printlist(student*);
-void add_node_end(student*&, string, string);
+void printlist(flight_system*);
+void add_node_end(flight_system*&, string, string);
 
 int main()
 {
 
 
-	student* head = nullptr;
+	flight_system* head = nullptr;
 	int x;
 	string destination[3] = { "Tampa,Florida    |     03-12     |    01-08","Cancun,Mexico    |     13-20     |    13-22","Managua,Nicaragua|     21-30     |    24-28" };
 	cout << "1.Future Flight Schedules\n2.Book Flight\n3.Check confirmation\n4.Exit" << endl;
@@ -56,10 +58,10 @@ int main()
 	return 0;
 }
 
-void printlist(student* head)
+void printlist(flight_system* head)
 {
 
-	student* temp = head;
+	flight_system* temp = head;
 
 	if (!head)
 		cout << "Empty linked list, Nothing to print\n";
@@ -74,17 +76,17 @@ void printlist(student* head)
 
 }
 
-void add_node_end(student*& head, string i, string s)
+void add_node_end(flight_system*& head, string i, string s)
 {
 
 	if (!head) // empty linked list
-		head = new student(i, s);
+		head = new flight_system(i, s);
 	else
 	{
-		student* temp = head;
+		flight_system* temp = head;
 		while (temp->next != nullptr)
 			temp = temp->next;
-		temp->next = new student(i, s);
+		temp->next = new flight_system(i, s);
 
 	}
 }
